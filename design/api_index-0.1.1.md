@@ -1,0 +1,82 @@
+# API Index V0.1.1
+ This file is the overview of the General API System
+---
+## User System
+### Create a new user
+ - 提供用户基本信息
+		- [用户登录名·用户编号(学号等)·密码·用户类型·Key·姓名·其他基本信息(待补全)]
+ - 使用 key 限制能否创建以及用户类型
+
+### Read user info
+ - 根据用户权限、所属组织控制能否读取某用户的{所有信息·部分信息}
+
+### Get current user profile
+ - 给出当前登录用户的所有基本信息
+
+### Disable a user
+ - 冻结用户登录和其他所有操作
+
+---
+## Orgnization System
+### Create a new orgnization
+ - 提供组织基本信息
+ 		- [组织创建者·组织创建日期·组织隶属关系·组织类型·组织介绍·组织详细介绍·其他基本信息(待补全)]
+ - 通过当前登录的用户权限控制能否创建组织 / 组织申请机制
+
+### Read orgnizations list
+ - 根据用户权限决定列出{所有组织·部分组织}列表
+ - 通过参数控制是否需要一并列出组织的基本信息
+
+### Read orgnization info
+ - 读取某个指定组织的详细信息
+
+### Edit orgnization info
+ - 编辑某个组织的基本信息、成员、管理者等
+ - 具体使用见详细 API 文档
+
+### Delete orgnization
+ - 删除某个组织
+
+---
+## Activity System
+### Draft a new activity
+ - 提供活动基本信息筹划一个新活动的草稿
+ 		- [活动的发起者·活动名称·活动介绍·活动开始时间·活动结束时间·活动报名信息·活动目标人群(tag/组织)·其他基本信息(待补全)]
+
+### Declare an activity
+ - 将一个草稿提交申报
+ - 已申报的活动可查看者与可审批者的决定机制需要指出
+ - 初步决定申报活动时推送一条信息到审批者
+
+### Approve an activity
+ - 操作分为给出修改意见反馈和审批通过一个活动
+ - 修改意见反馈可能通过消息机制实现
+
+### Read activities list
+ - 作为用户读取活动列表
+ - 通过参数和登陆用户的权限、组别控制读取处于不同状态下的活动列表以及决定某些活动是否显示
+
+### Read activity info
+ - 读取某个指定活动的基本信息以及状态
+
+### Edit activity info
+ - 修改某个活动的基本信息、状态
+ - 通过用户权限、组别以及活动状态控制能否修改活动的某些基本信息
+
+### Delete activity
+ - 删除一个处于{已申报未回应·草稿}状态的活动
+
+---
+## Message System
+### Send message
+ - 给指定组织、个人发送一条信息
+ - !可能!通过 type 或其他附加信息使得信息具有不同类型和功能（例如将信息绑定到某个活动等
+
+### Read message list
+ - 读取收到的信息列表
+
+### Read message
+ - 读取指定的信息具体内容
+
+### Delete message
+ - 删除一条信息
