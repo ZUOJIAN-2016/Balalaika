@@ -11,6 +11,12 @@
 |
 */
 
+/*
 $app->get('/', function () use ($app) {
     return $app->version();
 });
+*/
+
+$app->post('/users', ['uses' => 'UserController@create']);
+$app->get('/current/user', ['uses' => 'UserController@profile', 'middleware' => 'auth']);
+$app->get('/users/{id}', ['uses' => 'UserController@view', 'middleware' => 'auth']);

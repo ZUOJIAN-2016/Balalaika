@@ -1,5 +1,6 @@
 # API Index V0.1.1
  This file is the overview of the General API System
+ 带星号的表示未实现
 ---
 ## User System
 ### Create a new user
@@ -13,7 +14,7 @@
 ### Get current user profile
  - 给出当前登录用户的所有基本信息
 
-### Disable a user
+### Disable a user *
  - 冻结用户登录和其他所有操作
 
 ---

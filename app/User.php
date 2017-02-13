@@ -12,21 +12,26 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
 {
     use Authenticatable, Authorizable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+    protected $table = 'users';
+
     protected $fillable = [
-        'name', 'email',
+        'name', 'login_name', 'mac_addr'
     ];
 
-    /**
-     * The attributes excluded from the model's JSON form.
-     *
-     * @var array
-     */
     protected $hidden = [
         'password',
     ];
+
+    static public function validate(array $attr)
+    {
+        // todo 验证输入是否合法
+    }
+
+    // 只有用户自己才能看到的信息以及具有极高权限管理员才能看到的信息字段
+    static public function privateData()
+    {
+        return ['login_name', 'mac_addr'];
+    }
+    
+    const TYPE_STUDENT = 0;
 }
