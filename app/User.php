@@ -19,19 +19,27 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     ];
 
     protected $hidden = [
-        'password',
+        'password', 'id', 'updated_at', 'opt1', 'opt2', 'opt3'
     ];
+
+    // 定义用户与组织之间的多对多关系
+    public function organizations()
+    {
+        return $this->belongsToMany('App\Organization', 'users_organizations', 'users_id', 'organizations_id')
+                    ->withTimestamps()
+                    ->withPivot('relation');
+    }
+
+    /*            以下为自定义属性          */
+    /* ************************************ */
 
     static public function validate(array $attr)
     {
         // todo 验证输入是否合法
+        return true;
     }
 
-    // 只有用户自己才能看到的信息以及具有极高权限管理员才能看到的信息字段
-    static public function privateData()
-    {
-        return ['login_name', 'mac_addr'];
-    }
-    
-    const TYPE_STUDENT = 0;
+    /* 只有用户自己才能看到的信息以及具有极高权限管理员才能看到的信息字段 */
+    const PRIVATE_COLUMN = ['login_name', 'mac_addr'];
+    const TYPE_STUDENT;
 }

@@ -1,10 +1,11 @@
 <?php
+namespace App\Facades;
 use Aura\Session\SessionFactory;
 
 $sessionFactory = new SessionFactory;
 $session = $sessionFactory->newInstance($_COOKIE);
 
-static class Session {
+class Session {
 	static $sessionInstance;
 	static $segment;
 }

@@ -2,24 +2,25 @@
  This file is the overview of the General API System
  带星号的表示未实现
 ---
-## User System
-### Create a new user
+## 用户系统
+### 登陆
+### 注册
  - 提供用户基本信息
 		- [用户登录名·用户编号(学号等)·密码·用户类型·Key·姓名·其他基本信息(待补全)]
  - 使用 key 限制能否创建以及用户类型
 
-### Read user info
+### 读取他人信息
  - 根据用户权限、所属组织控制能否读取某用户的{所有信息·部分信息}
 
-### Get current user profile
+### 读取当前登录用户信息
  - 给出当前登录用户的所有基本信息
 
-### Disable a user *
+### 冻结用户 *
  - 冻结用户登录和其他所有操作
 
 ---
-## Orgnization System
-### Create a new orgnization
+## 组织系统
+### 创建新组织
  - 提供组织基本信息
  		- [组织创建者·组织创建日期·组织隶属关系·组织类型·组织介绍·组织详细介绍·其他基本信息(待补全)]
  - 通过当前登录的用户权限控制能否创建组织 / 组织申请机制

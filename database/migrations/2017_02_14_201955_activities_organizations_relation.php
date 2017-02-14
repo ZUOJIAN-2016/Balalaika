@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ActivitiesTagsRelation extends Migration
+class ActivitiesOrganizationsRelation extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class ActivitiesTagsRelation extends Migration
      */
     public function up()
     {
-        Schema::create('activities_tags', function (Blueprint $table) {
+        Schema::create('activities_organizations', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('activities_id');
-            $table->unsignedInteger('tags_id');
+            $table->unsignedInteger('organizations_id');
+            $table->smallInteger('relation');
             $table->text('opt1')->nullable();
-            $table->text('opt2')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class ActivitiesTagsRelation extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('activities_tags');
+        Schema::dropIfExists('activities_organizations');
     }
 }

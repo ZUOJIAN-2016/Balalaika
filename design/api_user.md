@@ -1,10 +1,64 @@
-# user system
-### Create a user
+# 用户系统
+## 通常规定
+### Type 说明
+|value|description|
+|-|-|
+|0|学生|
+|...|...|
+
+### 未登陆时访问某些 url
+```
+HTTP/1.1 401 Unauthorized
+Content-Type: application/json
+
+{"status":"error","message":"Unauthorized!"}
+```
+---
+### 登陆
+ Request:
+```
+HTTP/1.1 POST /login
+Content-Type: application/json
+
+{
+    "login_name": "{login_name}",
+    "password": "{password}"
+}
+```
+
+```
+/** 用户名密码不符或用户不存在 **/
+HTTP/1.1 401 Unauthorized
+Content-Type: application/json
+
+{"status":"error","message":"Unauthorized!"}
+
+
+/** 缺少必须字段 **/
+HTTP/1.1 400 Bad Request
+Content-Type: application/json
+
+{"status":"error","message":"Bad Request!"}
+
+
+/** 登陆成功 **/
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    name: "{real_name}",
+    login_name: "{login_name}",
+    type: 0,
+    logined: 0
+}
+```
+
+### 用户注册
  创建一个新用户，且使用该用户凭证登陆。  
  如果用户已经登陆,则返回错误信息.
  Request:
 ```
-POST /users
+HTTP/1.1 POST /users
 Content-Type: application/json
 
 {
@@ -16,41 +70,33 @@ Content-Type: application/json
 }
 ```
 
-|key|value|
-|-|-|
-|key|保密密钥，根据其不同内部商定对请求的响应|
-|name|姓名|
-|login_name|登陆所用名|
-|password|密码|
-|mac_addr(optional)|用户绑定的 mac 地址（可选）|
-
 Response:
 ```
+HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "id": 1,
     "name": "{real_name}",
     "login_name": "{login_name}",
     "type": 0,
     "logined": 0
 }
 
-400 Bad Request
+
+/** 用户处于登陆状态或者无权创建用户 **/
+HTTP/1.1 403 Forbidden
 Content-Type: application/json
 {
     "status": "warning",
-    "message": "您已经登陆了！",
-    "action": "abort"
+    "message": "当前状态您无法创建用户！"
 }
 ```
 
 ---
-### Get user info
-取得指定用户 id 的基本信息
+### 取得指定用户名的基本信息
 Request:
 ```
-GET /users/{user_id}
+GET /users/{login_name}
 ```
 
 Response:
@@ -58,15 +104,14 @@ Response:
 Content-Type: application/json
 
 {
-    id: 1,
     name: "{real_name}",
+    login_name: "{login_name}"
     type: 0,
 }
 ```
 
 ---
-### Get current user
-取得当前登陆用户的信息
+### 取得当前登陆用户的信息
 Request:
 ```
 GET /current/user
@@ -77,17 +122,9 @@ Response:
 Content-Type: application/json
 
 {
-    id: 1,
     name: "{real_name}",
     login_name: "{login_name}",
     type: 0,
     logined: 0
 }
 ```
-
----
-### Type 说明
-|value|description|
-|-|-|
-|0|学生|
-|...|...|

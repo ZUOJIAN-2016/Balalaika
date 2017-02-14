@@ -17,10 +17,10 @@ class CreateOrganizationsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->smallInteger('type');
-            $table->unsignedInteger('belongs')->nullable();
+            $table->unsignedInteger('parent_organization')->nullable();
             $table->string('instruction')->nullable();
             $table->text('description')->nullable();
-            $table->text('info');
+            $table->text('info')->nullable();
             $table->text('opt1')->nullable();
             $table->text('opt2')->nullable();
             $table->text('opt3')->nullable();
