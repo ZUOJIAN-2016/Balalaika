@@ -1,11 +1,12 @@
 # 用户系统
-## 通常规定
 ### Type 说明
-|value|description|
-|-|-|
-|0|学生|
-|...|...|
+ 用户类型对应的值：
 
+| Type | Value |
+| :---: | :---: |
+| RootAdmin | -1 |
+| Student | 0 |
+ 
 ### 未登陆时访问某些 url
 ```
 HTTP/1.1 401 Unauthorized
@@ -13,7 +14,8 @@ Content-Type: application/json
 
 {"status":"error","message":"Unauthorized!"}
 ```
----
+
+## 相关 API 列表
 ### 登陆
  Request:
 ```
