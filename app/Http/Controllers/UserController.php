@@ -82,9 +82,9 @@ class UserController extends Controller
         return Auth::user();
     }
 
-    public function info($id)
+    public function info($login_name)
     {
-        $user = User::findOrFail($id);
+        $user = User::where('login_name', $login_name)->firstOrFail();
         $user = $user->toArray();
         foreach (User::PRIVATE_COLUMN as $key) {
             unset($user[$key]);

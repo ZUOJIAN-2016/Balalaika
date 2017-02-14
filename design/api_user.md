@@ -17,7 +17,7 @@ Content-Type: application/json
 
 ## 相关 API 列表
 ### 登陆
- Request:
+ **Request:**
 ```
 HTTP/1.1 POST /login
 Content-Type: application/json
@@ -28,6 +28,7 @@ Content-Type: application/json
 }
 ```
 
+ **Response:**
 ```
 /** 用户名密码不符或用户不存在 **/
 HTTP/1.1 401 Unauthorized
@@ -57,8 +58,9 @@ Content-Type: application/json
 
 ### 用户注册
  创建一个新用户，且使用该用户凭证登陆。  
- 如果用户已经登陆,则返回错误信息.
- Request:
+ 如果用户已经登陆,则返回错误信息.  
+
+ **Request:**
 ```
 HTTP/1.1 POST /users
 Content-Type: application/json
@@ -72,7 +74,7 @@ Content-Type: application/json
 }
 ```
 
-Response:
+ **Response:**
 ```
 HTTP/1.1 200 OK
 Content-Type: application/json
@@ -96,12 +98,12 @@ Content-Type: application/json
 
 ---
 ### 取得指定用户名的基本信息
-Request:
+ **Request:**
 ```
 GET /users/{login_name}
 ```
 
-Response:
+ **Response:**
 ```
 Content-Type: application/json
 
@@ -114,12 +116,12 @@ Content-Type: application/json
 
 ---
 ### 取得当前登陆用户的信息
-Request:
+ **Request:**
 ```
 GET /current/user
 ```
 
-Response:
+ **Response:**
 ```
 Content-Type: application/json
 

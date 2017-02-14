@@ -21,4 +21,4 @@ $app->post('/login', ['uses' => 'UserController@login']);
 $app->get('/logout', ['uses' => 'UserController@logout']);
 $app->post('/users', ['uses' => 'UserController@create']);
 $app->get('/current/user', ['uses' => 'UserController@profile', 'middleware' => 'auth']);
-$app->get('/users/{id}', ['uses' => 'UserController@view', 'middleware' => 'auth']);
+$app->get('/users/{login_name}', ['uses' => 'UserController@view', 'middleware' => 'auth']);
