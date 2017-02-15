@@ -35,7 +35,12 @@ class AuthServiceProvider extends ServiceProvider
             if (!Session::$segment->get('user.login', false)) {
                 return null;
             }
-            return Session::$segment->get('user.model');
+            $user = Session::$segment->get('user.model');
+            if ($user->logined == false) {
+                $user->logined = true;
+                $user->save();
+            }
+            return $user;
         });
     }
 }

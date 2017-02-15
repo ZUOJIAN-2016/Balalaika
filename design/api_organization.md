@@ -80,3 +80,35 @@ HTTP/1.1 GET /organizations/{id}
 
  **Response**
  同创建新组织的回复
+
+### 查看某组织结构
+ 注意！该操作查询时间**可能**相对较长，因为需要递归查询组织层次
+
+ **Request:**
+```
+HTTP/1.1 GET /organizations/{id}/structure
+```
+
+ **Response**
+ 组织的树形结构，每个组织的子组织都以数组的形式在组织的 `children` 字段下
+
+### 查看某组织的直接成员
+ **Request:**
+```
+HTTP/1.1 GET /organizations/{id}/members
+```
+
+ **Response**
+ 仅显示当前组织的信息以及当前组织的成员信息，不包括其下属组织。
+
+### 查看某组织所有成员
+ 注意！该操作查询时间**可能**相对较长，因为需要递归查询组织层次后查询成员
+
+ **Request:**
+```
+HTTP/1.1 GET /organizations/{id}/members?all=1
+```
+
+ **Response**
+ 组织的树形结构上附加 members 属性，其中包含成员的详细信息
+

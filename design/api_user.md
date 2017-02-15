@@ -36,6 +36,18 @@ Content-Type: application/json
 
  **Response:**
 ```
+/** 登陆成功 **/
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    name: "{real_name}",
+    login_name: "{login_name}",
+    type: 0,
+    logined: 0
+}
+
+
 /** 用户名密码不符或用户不存在 **/
 HTTP/1.1 401 Unauthorized
 Content-Type: application/json
@@ -48,18 +60,20 @@ HTTP/1.1 400 Bad Request
 Content-Type: application/json
 
 {"status":"error","message":"Bad Request!"}
+```
 
+### 登出
+ **Request**
+```
+HTTP/1.1 GET /logout
+```
 
-/** 登陆成功 **/
+ **Response**
+```
 HTTP/1.1 200 OK
 Content-Type: application/json
 
-{
-    name: "{real_name}",
-    login_name: "{login_name}",
-    type: 0,
-    logined: 0
-}
+{"status": "success", "message": "Done!"}
 ```
 
 ### 用户注册

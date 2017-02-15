@@ -15,7 +15,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     protected $table = 'users';
 
     protected $fillable = [
-        'name', 'login_name', 'mac_addr'
+        'name', 'password', 'login_name', 'mac_addr'
     ];
 
     protected $hidden = [
@@ -28,6 +28,11 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         return $this->belongsToMany('App\Organization', 'users_organizations', 'users_id', 'organizations_id')
                     ->withTimestamps()
                     ->withPivot('relation');
+    }
+
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = password_hash($value, PASSWORD_DEFAULT);
     }
 
     /*            以下为自定义属性          */
@@ -43,5 +48,6 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     const PRIVATE_COLUMN = ['login_name', 'mac_addr'];
     /* 创建一个新用户必须提供的字段 */
     const REQUIRED_COLUMN = ['name', 'login_name', 'password'];
-    const TYPE_STUDENT;
+    const TYPE_ROOTADMIN = -1;
+    const TYPE_STUDENT = 0;
 }

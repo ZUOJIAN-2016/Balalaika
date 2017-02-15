@@ -53,4 +53,51 @@ class OrganizationController extends Controller
 		// Todo 返回前根据用户策略进行修饰
 		return $org;
 	}
+
+	// Todo 测试这神奇的玩意
+	public function structure($id)
+	{
+		try {
+			$org = Organization::with('children')->find($id)->firstOrFail();
+		} catch (ModelNotFoundException $e) {
+			abort(404, 'Not Found!');
+		}
+
+		foreach ($org->children() as $i) {
+			$this->dispatchTree($i, false);
+		}
+		return $org;
+	}
+	// Todo 还有这个
+	public function members(Request $request, $id)
+	{
+		try {
+			$org = Organization::with('members', 'children')->find($id)->firstOrFail();
+		} catch (ModelNotFoundException $e) {
+			abort(404, 'Not Found!');
+		}
+
+		if ($request->query('all', false) === false) {
+			// 仅显示直接成员
+			return $org;
+		}
+
+		// 递归查询
+		foreach ($org->children() as $i) {
+			$this->dispatchTree($i, true);
+		}
+		return $org;
+	}
+	private dispatchTree($organization, $member)
+	{
+		if ($member) {
+			foreach ($organization->children()->with('children', 'members') as $i) {
+				$this->dispatchTree($i);
+			}
+		} else {
+			foreach ($organization->children()->with('children')->all() as $i) {
+				$this->dispatchTree($i);
+			}
+		}
+	}
 }

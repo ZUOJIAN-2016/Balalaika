@@ -13,7 +13,7 @@ class UserController extends Controller
     {
         // 若用户已经登陆则直接返回用户登录凭证
         if (Session::$segment->get('user.login', false)) {
-            return $this->profile();
+            return Session::$segment->get('user.model');
         }
 
         // 如果所需字段不全返回 400 Bad Request
@@ -34,14 +34,9 @@ class UserController extends Controller
         }
 
         // 登陆成功
-        $data = $user->toArray();
-        if (!$user->logined) {
-            $user->logined = true;
-            $user->save();
-        }
         Session::$segment->set('user.login', true);
         Session::$segment->set('user.model', $user);
-        return response()->json($data);
+        return response()->json($user);
     }
 
     public function logout()
@@ -65,9 +60,9 @@ class UserController extends Controller
             abort(400, 'Bad Request!');
         }
 
+        // Todo 根据 Key 决定建立用户的类型
         $user = new User;
         $user->fill($request->input());
-        $user->password = password_hash($request->input('password'), PASSWORD_DEFAULT);
         $user->type = User::TYPE_STUDENT;
         $user->logined = false;
         $user->save();

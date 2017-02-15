@@ -9,11 +9,11 @@ class Organization extends Model
     protected $table = 'organizations';
 
     protected $fillable = [
-    	'name', 'type', 'parent_organization', 'introduction', 'description', 'info'
+    	'name', 'parent_organization', 'introduction', 'description', 'info'
     ];
 
     protected $hidden = [
-    	'opt1', 'opt2', 'opt3'
+    	'opt1', 'opt2', 'opt3', 'type'
     ];
 
     protected $casts = [
@@ -49,4 +49,6 @@ class Organization extends Model
 
     const REQUIRED_COLUMN = ['name', 'type', 'parent_organization'];
     const SUMMARY_COLUMN = ['id', 'name', 'type', 'introduction'];
+
+    const NO_DIRECT_MEMBER
 }
