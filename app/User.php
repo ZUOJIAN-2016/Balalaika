@@ -41,5 +41,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
 
     /* 只有用户自己才能看到的信息以及具有极高权限管理员才能看到的信息字段 */
     const PRIVATE_COLUMN = ['login_name', 'mac_addr'];
+    /* 创建一个新用户必须提供的字段 */
+    const REQUIRED_COLUMN = ['name', 'login_name', 'password'];
     const TYPE_STUDENT;
 }

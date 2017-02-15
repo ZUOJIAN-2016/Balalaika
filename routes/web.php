@@ -22,3 +22,10 @@ $app->get('/logout', ['uses' => 'UserController@logout']);
 $app->post('/users', ['uses' => 'UserController@create']);
 $app->get('/current/user', ['uses' => 'UserController@profile', 'middleware' => 'auth']);
 $app->get('/users/{login_name}', ['uses' => 'UserController@view', 'middleware' => 'auth']);
+
+$app->group(['middleware' => 'auth'], function () {
+	$app->post('/organizations', ['uses' => 'OrganizationController@create']);
+	$app->get('/organizations', ['uses' => 'OrganizationController@list']);
+	$app->get('/organizations/{id}', ['uses' => 'OrganizationController@view']);
+});
+

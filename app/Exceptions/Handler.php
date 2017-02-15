@@ -45,12 +45,9 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
-        // todo 测试直接引发错误是否会产生 404 错误
-        /*
-        if ($e instanceof ModelNotFoundException) {
-            abort(404);
+        if ($e instanceof HttpException) {
+            return response()->json(['status' => 'error', 'message' => $e->getMessage()], $e->getStatusCode());
         }
-        */
 
         return parent::render($request, $e);
     }

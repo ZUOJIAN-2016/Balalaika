@@ -1,6 +1,6 @@
 <?php
-
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Auth;
@@ -18,19 +18,19 @@ class UserController extends Controller
 
         // 如果所需字段不全返回 400 Bad Request
         if (!$request->has(['login_name', 'password'])) {
-            return response()->json(['status' => 'error', 'message' => 'Bad Request!'], 400);
+            abort(400, 'Bad Request!');
         }
 
         try {
             $user = User::where('login_name', $request->input('login_name'))->firstOrFail();
         } catch (ModelNotFoundException $e) {
             // 没有找到用户也返回 401
-            return response()->json(['status' => 'error', 'message' => 'Unauthorized!'], 401);
+            abort(401, 'Unauthorized!');
         }
 
-        if (!password_verify($request->get('password'), $user->password)) {
+        if (!password_verify($request->input('password'), $user->password)) {
             // 密码不符返回 401
-            return response()->json(['status' => 'error', 'message' => 'Unauthorized!'], 401);
+            abort(401, 'Unauthorized!');
         }
 
         // 登陆成功
@@ -48,20 +48,21 @@ class UserController extends Controller
     {
         Session::$segment->set('user.login', null);
         Session::$segment->set('user.model', null);
-        return response()->json(['status' => 'success', 'message' => 'done!']);
+        abort(200, 'Done!');
     }
 
     public function create(Request $request)
     {
         // 用户已登陆的情况
         if (Session::$segment->get('user.login', false)) {
-            return response()->json(['status' => 'warning', 'message' => '当前状态您无法创建用户！'], 403);
+            // Todo 使用用户授权策略控制权限
+            abort(403, '当前状态您无法创建用户！');
         }
 
         // 验证输入是否含必需字段且能通过验证
         // 暂时没有使用 Validator
-        if (!$request->has(['name', 'login_name', 'password']) or !User::validate($request->input())) {
-            return response()->json(['status' => 'error', 'message' => 'Bad Request!'], 400);
+        if (!$request->has(User::REQUIRED_COLUMN) or !User::validate($request->input())) {
+            abort(400, 'Bad Request!');
         }
 
         $user = new User;
@@ -82,6 +83,7 @@ class UserController extends Controller
         return Auth::user();
     }
 
+    // Todo 使用用户授权策略控制用户权限
     public function info($login_name)
     {
         $user = User::where('login_name', $login_name)->firstOrFail();

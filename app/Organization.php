@@ -9,11 +9,15 @@ class Organization extends Model
     protected $table = 'organizations';
 
     protected $fillable = [
-    	'name', 'type', 'parent_organization', 'instruction', 'description', 'info'
+    	'name', 'type', 'parent_organization', 'introduction', 'description', 'info'
     ];
 
     protected $hidden = [
     	'opt1', 'opt2', 'opt3'
+    ];
+
+    protected $casts = [
+        'info' => 'array'
     ];
 
     // 定义组织间的层级关系
@@ -42,4 +46,7 @@ class Organization extends Model
     	return $this->belongsToMany('App\Activity', 'activities_organizations', 'organizations_id', 'activities_id')
     				->withPivot('relation');
     }
+
+    const REQUIRED_COLUMN = ['name', 'type', 'parent_organization'];
+    const SUMMARY_COLUMN = ['id', 'name', 'type', 'introduction'];
 }
