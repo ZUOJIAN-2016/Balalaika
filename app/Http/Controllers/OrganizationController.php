@@ -29,7 +29,7 @@ class OrganizationController extends Controller
 		return $org;
 	}
 
-	public function list(Request $request)
+	public function showList(Request $request)
 	{
 		// Todo 使用用户策略控制显示的组织类型
 
@@ -54,6 +54,18 @@ class OrganizationController extends Controller
 		return $org;
 	}
 
+	private function dispatchTree($organization, $member)
+	{
+		if ($member) {
+			foreach ($organization->children()->with('children', 'members') as $i) {
+				$this->dispatchTree($i);
+			}
+		} else {
+			foreach ($organization->children()->with('children')->all() as $i) {
+				$this->dispatchTree($i);
+			}
+		}
+	}
 	// Todo 测试这神奇的玩意
 	public function structure($id)
 	{
@@ -87,17 +99,5 @@ class OrganizationController extends Controller
 			$this->dispatchTree($i, true);
 		}
 		return $org;
-	}
-	private dispatchTree($organization, $member)
-	{
-		if ($member) {
-			foreach ($organization->children()->with('children', 'members') as $i) {
-				$this->dispatchTree($i);
-			}
-		} else {
-			foreach ($organization->children()->with('children')->all() as $i) {
-				$this->dispatchTree($i);
-			}
-		}
 	}
 }

@@ -49,6 +49,4 @@ class Organization extends Model
 
     const REQUIRED_COLUMN = ['name', 'type', 'parent_organization'];
     const SUMMARY_COLUMN = ['id', 'name', 'type', 'introduction'];
-
-    const NO_DIRECT_MEMBER
 }
