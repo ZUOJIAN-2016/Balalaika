@@ -23,8 +23,8 @@ $app->post('/users', ['uses' => 'UserController@create']);
 
 $app->group(['middleware' => 'auth'], function () use ($app) {
 	$app->get('/current/user', ['uses' => 'UserController@profile']);
+	$app->patch('/current/user', ['uses' => 'UserController@edit']);
 	$app->get('/users/{login_name}', ['uses' => 'UserController@view']);
-
 
 	$app->post('/organizations', ['uses' => 'OrganizationController@create']);
 	$app->get('/organizations', ['uses' => 'OrganizationController@showList']);

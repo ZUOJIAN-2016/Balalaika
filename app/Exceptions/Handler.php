@@ -46,6 +46,9 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $e)
     {
         if ($e instanceof HttpException) {
+            if (empty($e->getMessage())) {
+                $e = new HttpException($e->getStatusCode(), 'Unknown error!');
+            }
             return response()->json(['status' => 'error', 'message' => $e->getMessage()], $e->getStatusCode());
         }
 

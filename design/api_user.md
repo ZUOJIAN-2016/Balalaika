@@ -2,8 +2,11 @@
 ## 通常事项
 ### Todo
  * 查看所有用户 / 满足某些条件的用户列表
- * 修改用户基本信息
  * 密码重置
+
+### 自动发生的行为
+ 新注册的用户的 `logined` 字段为 `0`，在任何需要用户登录才能进行的操作发生后该值将会自动置为 `1`。  
+ 这意味着如果新注册用户直接退出系统该字段依旧为 `0`，该机制用于注册用户的首次提示或其他作用。
 
 ### 用户之 Type 说明
  用户类型对应的值：
@@ -25,7 +28,7 @@ Content-Type: application/json
 ### 登陆
  **Request:**
 ```
-HTTP/1.1 POST /login
+POST /login
 Content-Type: application/json
 
 {
@@ -65,7 +68,7 @@ Content-Type: application/json
 ### 登出
  **Request**
 ```
-HTTP/1.1 GET /logout
+GET /logout
 ```
 
  **Response**
@@ -82,7 +85,7 @@ Content-Type: application/json
 
  **Request:**
 ```
-HTTP/1.1 POST /users
+POST /users
 Content-Type: application/json
 
 {
@@ -128,9 +131,9 @@ GET /users/{login_name}
 Content-Type: application/json
 
 {
-    name: "{real_name}",
-    login_name: "{login_name}"
-    type: 0,
+    "name": "{real_name}",
+    "login_name": "{login_name}"
+    "type": 0,
 }
 ```
 
@@ -146,9 +149,32 @@ GET /current/user
 Content-Type: application/json
 
 {
-    name: "{real_name}",
-    login_name: "{login_name}",
-    type: 0,
-    logined: 0
+    "name": "{real_name}",
+    "login_name": "{login_name}",
+    "type": 0,
+    "logined": 0
+}
+
+```
+### 修改当前用户信息
+ **注意:**
+ 当前，只允许修改用户信息的 `['mac_addr', 'name']` 字段，其他所有字段即使提交也会被忽略。  
+ 返回的信息中只会显示修改过的字段，意思是如果请求中只有 `name` 字段，则只会返回 `name` 字段的最新值，即使提交的 `name` 与原本的相同。  
+ 服务器会忽略所有其他字段。
+
+ **Request:**
+```
+PATCH /current/user
+Content-Type: application/json
+
+{
+    "name": "{edited_name}"
+}
+```
+
+ **Response:**
+```
+{
+    "name": "{edited_name}"
 }
 ```

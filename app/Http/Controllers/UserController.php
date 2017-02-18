@@ -43,7 +43,7 @@ class UserController extends Controller
     {
         Session::$segment->set('user.login', null);
         Session::$segment->set('user.model', null);
-        abort(200, 'Done!');
+        return response()->json(['status' => 'success', 'message' => 'Done!']);
     }
 
     public function create(Request $request)
@@ -79,13 +79,31 @@ class UserController extends Controller
     }
 
     // Todo 使用用户授权策略控制用户权限
-    public function info($login_name)
+    public function view($loginName)
     {
-        $user = User::where('login_name', $login_name)->firstOrFail();
+        try {
+            $user = User::where('login_name', $loginName)->firstOrFail();
+        } catch (ModelNotFoundException $e) {
+            abort(404, 'Not Found!');
+        }
         $user = $user->toArray();
         foreach (User::PRIVATE_COLUMN as $key) {
             unset($user[$key]);
         }
         return response()->json($user);
+    }
+
+    public function edit(Request $request)
+    {
+        $user = Auth::user();
+        $response = [];
+        foreach (User::MODIFIABLE_COLUMN as $key) {
+            if (!empty($request->input($key))) {
+                $user->{$key} = $request->input($key);
+                $response[$key] = $request->input($key);
+            }
+        }
+        $user->save();
+        return response()->json($response);
     }
 }

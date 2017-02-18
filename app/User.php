@@ -1,5 +1,4 @@
 <?php
-
 namespace App;
 
 use Illuminate\Auth\Authenticatable;
@@ -48,6 +47,8 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     const PRIVATE_COLUMN = ['login_name', 'mac_addr'];
     /* 创建一个新用户必须提供的字段 */
     const REQUIRED_COLUMN = ['name', 'login_name', 'password'];
+    const MODIFIABLE_COLUMN = ['mac_addr', 'name'];
+
     const TYPE_ROOTADMIN = -1;
     const TYPE_STUDENT = 0;
 }
