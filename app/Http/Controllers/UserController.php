@@ -98,7 +98,11 @@ class UserController extends Controller
         $user = Auth::user();
         $response = [];
         foreach (User::MODIFIABLE_COLUMN as $key) {
+<<<<<<< HEAD
             if ($request->has($key)) {
+=======
+            if (!empty($request->input($key))) {
+>>>>>>> origin/develop
                 $user->{$key} = $request->input($key);
                 $response[$key] = $request->input($key);
             }

@@ -52,7 +52,10 @@ HTTP/1.1 GET /organizations?skip=0&take=15
  * `skip` 表示需要跳过的信息条数，默认为 `0`
  * `take` 表示需要显示的信息条数，默认为 `15`
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/develop
  **Response:**
 ```
 HTTP/1.1 200 OK
@@ -113,6 +116,7 @@ HTTP/1.1 GET /organizations/{id}/members?all=1
  **Response**
  组织的树形结构上附加 members 属性，其中包含成员的详细信息
 
+<<<<<<< HEAD
 
 ### 编辑组织信息
  **Request:**
@@ -132,3 +136,5 @@ Content-Type: application/json
 	"message": ""
 }
 ```
+=======
+>>>>>>> origin/develop

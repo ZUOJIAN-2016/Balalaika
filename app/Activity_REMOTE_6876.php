@@ -24,19 +24,9 @@ class Activity extends Model
                     ->withPivot('relation');
     }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/develop
     // 定义活动与 Tag 之间的多对多关系
     public function tags()
     {
         return $this->belongsToMany('App\Tags', 'activities_tags', 'activities_id', 'tags_id');
     }
-<<<<<<< HEAD
-
 }
-
-=======
-}
->>>>>>> origin/develop

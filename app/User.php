@@ -28,6 +28,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
                     ->withTimestamps()
                     ->withPivot('relation');
     }
+<<<<<<< HEAD
    //定义用户与活动的多对多关系
     public function users()
     {
@@ -35,13 +36,18 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
             ->withTimestamps()
             ->withPivot('relation');
     }
+=======
+>>>>>>> origin/develop
 
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = password_hash($value, PASSWORD_DEFAULT);
     }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/develop
     /*            以下为自定义属性          */
     /* ************************************ */
 
