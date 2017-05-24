@@ -1,0 +1,147 @@
+[2017-05-21 15:32:07] lumen.ERROR: PDOException: SQLSTATE[HY000] [1044] Access denied for user ''@'localhost' to database 'forge' in H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\database\Connectors\Connector.php:119
+Stack trace:
+#0 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\database\Connectors\Connector.php(119): PDO->__construct('mysql:host=loca...', 'forge', '', Array)
+#1 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\database\Connectors\Connector.php(56): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=loca...', 'forge', '', Array)
+#2 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\database\Connectors\MySqlConnector.php(24): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=loca...', Array, Array)
+#3 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\database\Connectors\ConnectionFactory.php(127): Illuminate\Database\Connectors\MySqlConnector->connect(Array)
+#4 [internal function]: Illuminate\Database\Connectors\ConnectionFactory->Illuminate\Database\Connectors\{closure}()
+#5 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\database\Connection.php(964): call_user_func(Object(Closure))
+#6 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\database\Connection.php(832): Illuminate\Database\Connection->getPdo()
+#7 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\database\Connection.php(717): Illuminate\Database\Connection->reconnectIfMissingConnection()
+#8 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\database\Connection.php(350): Illuminate\Database\Connection->run('select * from i...', Array, Object(Closure))
+#9 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\database\Schema\MySqlBuilder.php(21): Illuminate\Database\Connection->select('select * from i...', Array)
+#10 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\database\Migrations\DatabaseMigrationRepository.php(156): Illuminate\Database\Schema\MySqlBuilder->hasTable('migrations')
+#11 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\database\Migrations\Migrator.php(515): Illuminate\Database\Migrations\DatabaseMigrationRepository->repositoryExists()
+#12 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\database\Console\Migrations\MigrateCommand.php(92): Illuminate\Database\Migrations\Migrator->repositoryExists()
+#13 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\database\Console\Migrations\MigrateCommand.php(58): Illuminate\Database\Console\Migrations\MigrateCommand->prepareDatabase()
+#14 [internal function]: Illuminate\Database\Console\Migrations\MigrateCommand->fire()
+#15 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\container\Container.php(508): call_user_func_array(Array, Array)
+#16 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\console\Command.php(169): Illuminate\Container\Container->call(Array)
+#17 H:\XAMPP\htdocs\Balalaika-develop\vendor\symfony\console\Command\Command.php(261): Illuminate\Console\Command->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#18 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\console\Command.php(155): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#19 H:\XAMPP\htdocs\Balalaika-develop\vendor\symfony\console\Application.php(817): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#20 H:\XAMPP\htdocs\Balalaika-develop\vendor\symfony\console\Application.php(185): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Database\Console\Migrations\MigrateCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#21 H:\XAMPP\htdocs\Balalaika-develop\vendor\symfony\console\Application.php(116): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#22 H:\XAMPP\htdocs\Balalaika-develop\vendor\laravel\lumen-framework\src\Console\Kernel.php(83): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#23 H:\XAMPP\htdocs\Balalaika-develop\artisan(35): Laravel\Lumen\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#24 {main}  
+[2017-05-21 15:32:07] lumen.ERROR: PDOException: SQLSTATE[HY000] [1044] Access denied for user ''@'localhost' to database 'forge' in H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\database\Connectors\Connector.php:119
+Stack trace:
+#0 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\database\Connectors\Connector.php(119): PDO->__construct('mysql:host=loca...', 'forge', '', Array)
+#1 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\database\Connectors\Connector.php(56): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=loca...', 'forge', '', Array)
+#2 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\database\Connectors\MySqlConnector.php(24): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=loca...', Array, Array)
+#3 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\database\Connectors\ConnectionFactory.php(127): Illuminate\Database\Connectors\MySqlConnector->connect(Array)
+#4 [internal function]: Illuminate\Database\Connectors\ConnectionFactory->Illuminate\Database\Connectors\{closure}()
+#5 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\database\Connection.php(964): call_user_func(Object(Closure))
+#6 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\database\Connection.php(832): Illuminate\Database\Connection->getPdo()
+#7 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\database\Connection.php(717): Illuminate\Database\Connection->reconnectIfMissingConnection()
+#8 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\database\Connection.php(350): Illuminate\Database\Connection->run('select * from i...', Array, Object(Closure))
+#9 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\database\Schema\MySqlBuilder.php(21): Illuminate\Database\Connection->select('select * from i...', Array)
+#10 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\database\Migrations\DatabaseMigrationRepository.php(156): Illuminate\Database\Schema\MySqlBuilder->hasTable('migrations')
+#11 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\database\Migrations\Migrator.php(515): Illuminate\Database\Migrations\DatabaseMigrationRepository->repositoryExists()
+#12 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\database\Console\Migrations\MigrateCommand.php(92): Illuminate\Database\Migrations\Migrator->repositoryExists()
+#13 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\database\Console\Migrations\MigrateCommand.php(58): Illuminate\Database\Console\Migrations\MigrateCommand->prepareDatabase()
+#14 [internal function]: Illuminate\Database\Console\Migrations\MigrateCommand->fire()
+#15 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\container\Container.php(508): call_user_func_array(Array, Array)
+#16 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\console\Command.php(169): Illuminate\Container\Container->call(Array)
+#17 H:\XAMPP\htdocs\Balalaika-develop\vendor\symfony\console\Command\Command.php(261): Illuminate\Console\Command->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#18 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\console\Command.php(155): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#19 H:\XAMPP\htdocs\Balalaika-develop\vendor\symfony\console\Application.php(817): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#20 H:\XAMPP\htdocs\Balalaika-develop\vendor\symfony\console\Application.php(185): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Database\Console\Migrations\MigrateCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#21 H:\XAMPP\htdocs\Balalaika-develop\vendor\symfony\console\Application.php(116): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#22 H:\XAMPP\htdocs\Balalaika-develop\vendor\laravel\lumen-framework\src\Console\Kernel.php(83): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#23 H:\XAMPP\htdocs\Balalaika-develop\artisan(35): Laravel\Lumen\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#24 {main}  
+[2017-05-21 15:33:24] lumen.ERROR: PDOException: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES) in H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\database\Connectors\Connector.php:119
+Stack trace:
+#0 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\database\Connectors\Connector.php(119): PDO->__construct('mysql:host=127....', 'root', 'secret', Array)
+#1 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\database\Connectors\Connector.php(56): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'root', 'secret', Array)
+#2 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\database\Connectors\MySqlConnector.php(24): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=127....', Array, Array)
+#3 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\database\Connectors\ConnectionFactory.php(127): Illuminate\Database\Connectors\MySqlConnector->connect(Array)
+#4 [internal function]: Illuminate\Database\Connectors\ConnectionFactory->Illuminate\Database\Connectors\{closure}()
+#5 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\database\Connection.php(964): call_user_func(Object(Closure))
+#6 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\database\Connection.php(832): Illuminate\Database\Connection->getPdo()
+#7 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\database\Connection.php(717): Illuminate\Database\Connection->reconnectIfMissingConnection()
+#8 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\database\Connection.php(350): Illuminate\Database\Connection->run('select * from i...', Array, Object(Closure))
+#9 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\database\Schema\MySqlBuilder.php(21): Illuminate\Database\Connection->select('select * from i...', Array)
+#10 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\database\Migrations\DatabaseMigrationRepository.php(156): Illuminate\Database\Schema\MySqlBuilder->hasTable('migrations')
+#11 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\database\Migrations\Migrator.php(515): Illuminate\Database\Migrations\DatabaseMigrationRepository->repositoryExists()
+#12 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\database\Console\Migrations\MigrateCommand.php(92): Illuminate\Database\Migrations\Migrator->repositoryExists()
+#13 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\database\Console\Migrations\MigrateCommand.php(58): Illuminate\Database\Console\Migrations\MigrateCommand->prepareDatabase()
+#14 [internal function]: Illuminate\Database\Console\Migrations\MigrateCommand->fire()
+#15 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\container\Container.php(508): call_user_func_array(Array, Array)
+#16 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\console\Command.php(169): Illuminate\Container\Container->call(Array)
+#17 H:\XAMPP\htdocs\Balalaika-develop\vendor\symfony\console\Command\Command.php(261): Illuminate\Console\Command->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#18 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\console\Command.php(155): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#19 H:\XAMPP\htdocs\Balalaika-develop\vendor\symfony\console\Application.php(817): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#20 H:\XAMPP\htdocs\Balalaika-develop\vendor\symfony\console\Application.php(185): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Database\Console\Migrations\MigrateCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#21 H:\XAMPP\htdocs\Balalaika-develop\vendor\symfony\console\Application.php(116): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#22 H:\XAMPP\htdocs\Balalaika-develop\vendor\laravel\lumen-framework\src\Console\Kernel.php(83): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#23 H:\XAMPP\htdocs\Balalaika-develop\artisan(35): Laravel\Lumen\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#24 {main}  
+[2017-05-21 15:33:24] lumen.ERROR: PDOException: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES) in H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\database\Connectors\Connector.php:119
+Stack trace:
+#0 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\database\Connectors\Connector.php(119): PDO->__construct('mysql:host=127....', 'root', 'secret', Array)
+#1 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\database\Connectors\Connector.php(56): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'root', 'secret', Array)
+#2 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\database\Connectors\MySqlConnector.php(24): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=127....', Array, Array)
+#3 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\database\Connectors\ConnectionFactory.php(127): Illuminate\Database\Connectors\MySqlConnector->connect(Array)
+#4 [internal function]: Illuminate\Database\Connectors\ConnectionFactory->Illuminate\Database\Connectors\{closure}()
+#5 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\database\Connection.php(964): call_user_func(Object(Closure))
+#6 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\database\Connection.php(832): Illuminate\Database\Connection->getPdo()
+#7 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\database\Connection.php(717): Illuminate\Database\Connection->reconnectIfMissingConnection()
+#8 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\database\Connection.php(350): Illuminate\Database\Connection->run('select * from i...', Array, Object(Closure))
+#9 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\database\Schema\MySqlBuilder.php(21): Illuminate\Database\Connection->select('select * from i...', Array)
+#10 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\database\Migrations\DatabaseMigrationRepository.php(156): Illuminate\Database\Schema\MySqlBuilder->hasTable('migrations')
+#11 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\database\Migrations\Migrator.php(515): Illuminate\Database\Migrations\DatabaseMigrationRepository->repositoryExists()
+#12 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\database\Console\Migrations\MigrateCommand.php(92): Illuminate\Database\Migrations\Migrator->repositoryExists()
+#13 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\database\Console\Migrations\MigrateCommand.php(58): Illuminate\Database\Console\Migrations\MigrateCommand->prepareDatabase()
+#14 [internal function]: Illuminate\Database\Console\Migrations\MigrateCommand->fire()
+#15 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\container\Container.php(508): call_user_func_array(Array, Array)
+#16 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\console\Command.php(169): Illuminate\Container\Container->call(Array)
+#17 H:\XAMPP\htdocs\Balalaika-develop\vendor\symfony\console\Command\Command.php(261): Illuminate\Console\Command->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#18 H:\XAMPP\htdocs\Balalaika-develop\vendor\illuminate\console\Command.php(155): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#19 H:\XAMPP\htdocs\Balalaika-develop\vendor\symfony\console\Application.php(817): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#20 H:\XAMPP\htdocs\Balalaika-develop\vendor\symfony\console\Application.php(185): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Database\Console\Migrations\MigrateCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#21 H:\XAMPP\htdocs\Balalaika-develop\vendor\symfony\console\Application.php(116): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#22 H:\XAMPP\htdocs\Balalaika-develop\vendor\laravel\lumen-framework\src\Console\Kernel.php(83): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#23 H:\XAMPP\htdocs\Balalaika-develop\artisan(35): Laravel\Lumen\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#24 {main}  
+[2017-05-21 15:40:07] lumen.ERROR: Symfony\Component\Console\Exception\CommandNotFoundException: Command "set" is not defined.
+
+Did you mean this?
+    migrate:reset in H:\XAMPP\htdocs\Balalaika-develop\vendor\symfony\console\Application.php:534
+Stack trace:
+#0 H:\XAMPP\htdocs\Balalaika-develop\vendor\symfony\console\Application.php(182): Symfony\Component\Console\Application->find('set')
+#1 H:\XAMPP\htdocs\Balalaika-develop\vendor\symfony\console\Application.php(116): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#2 H:\XAMPP\htdocs\Balalaika-develop\vendor\laravel\lumen-framework\src\Console\Kernel.php(83): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#3 H:\XAMPP\htdocs\Balalaika-develop\artisan(35): Laravel\Lumen\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#4 {main}  
+[2017-05-21 15:40:20] lumen.ERROR: Symfony\Component\Console\Exception\CommandNotFoundException: Command "db:set" is not defined.
+
+Did you mean one of these?
+    migrate:reset
+    db:seed in H:\XAMPP\htdocs\Balalaika-develop\vendor\symfony\console\Application.php:534
+Stack trace:
+#0 H:\XAMPP\htdocs\Balalaika-develop\vendor\symfony\console\Application.php(182): Symfony\Component\Console\Application->find('db:set')
+#1 H:\XAMPP\htdocs\Balalaika-develop\vendor\symfony\console\Application.php(116): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#2 H:\XAMPP\htdocs\Balalaika-develop\vendor\laravel\lumen-framework\src\Console\Kernel.php(83): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#3 H:\XAMPP\htdocs\Balalaika-develop\artisan(35): Laravel\Lumen\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#4 {main}  
+[2017-05-22 11:27:12] lumen.ERROR: Symfony\Component\Console\Exception\CommandNotFoundException: Command "make:auth" is not defined.
+
+Did you mean this?
+    make:migration in H:\XAMPP\htdocs\Balalaika-develop\vendor\symfony\console\Application.php:534
+Stack trace:
+#0 H:\XAMPP\htdocs\Balalaika-develop\vendor\symfony\console\Application.php(182): Symfony\Component\Console\Application->find('make:auth')
+#1 H:\XAMPP\htdocs\Balalaika-develop\vendor\symfony\console\Application.php(116): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#2 H:\XAMPP\htdocs\Balalaika-develop\vendor\laravel\lumen-framework\src\Console\Kernel.php(83): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#3 H:\XAMPP\htdocs\Balalaika-develop\artisan(35): Laravel\Lumen\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#4 {main}  
+[2017-05-22 11:33:04] lumen.ERROR: Symfony\Component\Console\Exception\CommandNotFoundException: There are no commands defined in the "event" namespace. in H:\XAMPP\htdocs\Balalaika-develop\vendor\symfony\console\Application.php:488
+Stack trace:
+#0 H:\XAMPP\htdocs\Balalaika-develop\vendor\symfony\console\Application.php(520): Symfony\Component\Console\Application->findNamespace('event')
+#1 H:\XAMPP\htdocs\Balalaika-develop\vendor\symfony\console\Application.php(182): Symfony\Component\Console\Application->find('event:generate')
+#2 H:\XAMPP\htdocs\Balalaika-develop\vendor\symfony\console\Application.php(116): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#3 H:\XAMPP\htdocs\Balalaika-develop\vendor\laravel\lumen-framework\src\Console\Kernel.php(83): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#4 H:\XAMPP\htdocs\Balalaika-develop\artisan(35): Laravel\Lumen\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#5 {main}  
